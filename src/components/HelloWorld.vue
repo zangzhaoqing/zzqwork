@@ -54,6 +54,7 @@
   <transition name="component-fade" mode="out-in">
   <component v-bind:is="view"></component>
   </transition>
+  <input type="text" v-focus>
   </div>
 </template>
 
@@ -72,6 +73,14 @@ export default {
       view: 'v-a'
     }
   },
+  directives: {
+  focus: {
+    // 指令的定义
+    inserted: function (el) {
+      el.focus()
+    }
+  }
+},
   methods:{
     skip(){
       this.$router.push({name:'Toast',params:{userId:123}})

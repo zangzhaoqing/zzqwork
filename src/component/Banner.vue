@@ -9,7 +9,7 @@
             <img :src="item.imgUrl" alt="">
         </a>
        
-        <button @click="right">></button>
+        <button @click="right" v-focus>></button>
       
     </div>
     </transition-group>
@@ -49,7 +49,15 @@ export default {
   },
   mounted(){
       this.copes()    
-  }   
+  },
+  directives: {
+  focus: {
+    // 指令的定义        
+    inserted: function (el) { 
+      el.click()                        
+    }
+  }
+}   
 }
 </script>
 

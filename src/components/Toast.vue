@@ -9,11 +9,13 @@
     <span v-for="item of array" :key="item" class="list-complete-item"> {{item}} </span>
     
     </transition-group>
+    <Banner></Banner>  
   </div>
 </template>
 
 <script>
 import {Lodash} from '../assets/lodash'
+import Banner from '../component/Banner'
 export default {
   name: 'Toast',
   data () {
@@ -47,7 +49,11 @@ export default {
   },
   created(){
      
-  }
+  },
+  components:{
+    Banner
+  },
+  
 }
 </script>
 
