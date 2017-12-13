@@ -38,10 +38,10 @@ export default {
          }
       }
       }
+  },
+  created(){
+    this.$toast.center()
   }
-//  directives('img',{
-      
-//   })
 }
  
 </script>

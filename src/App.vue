@@ -7,7 +7,10 @@
 
 <script>
 export default {   
-  name: 'app'   
+  name: 'app',
+  mounted(){
+        this.$toast.center()         // Hello World
+    }   
 }
 </script>
 

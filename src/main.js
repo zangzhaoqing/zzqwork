@@ -3,9 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
+import Toast from './assets/toast.js'
 Vue.config.productionTip = false
-
+Vue.use(Toast);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
