@@ -55,12 +55,30 @@
   <component v-bind:is="view"></component>
   </transition>
   <input type="text" v-focus>
+   
+   <div class="swiper-container">
+      <div class="swiper-wrapper">
+           <div class="swiper-slide" v-for="item in items">             
+             <img :src="item.url" alt="">
+           </div>
+      </div>
+      <!-- 如果需要分页器 -->
+      <div class="swiper-pagination"></div>
+      <!-- 如果需要导航按钮 -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      <!-- 如果需要滚动条 -->
+      <div class="swiper-scrollbar"></div>
+   </div>
+  
   </div>
 </template>
 
 <script>
 import Counter from '../component/Counter'
 import {Velocity} from '../assets/velocity'
+import Swiper from '../assets/swiper.min'
+// import msg1 from 'http://pic2.ooopic.com/12/22/94/30b1OOOPIC5c.jpg'
 export default {
   name: 'HelloWorld',
   data () {
@@ -70,8 +88,40 @@ export default {
       num:'',
       shows:true,
       sho:true,
-      view: 'v-a'
+      view: 'v-a',
+      // msg1:require('http://pic2.ooopic.com/12/22/94/30b1OOOPIC5c.jpg')
+      items:[
+        {
+          url:'http://img1.imgtn.bdimg.com/it/u=594559231,2167829292&fm=27&gp=0.jpg',
+        },
+        {
+          url:'http://pic2.ooopic.com/12/22/94/30b1OOOPIC5c.jpg',
+        },
+        {
+          url:'http://img.taopic.com/uploads/allimg/121019/234917-121019231h258.jpg'  
+        }
+      ]
     }
+  },
+  mounted(){
+   this.$nextTick(()=>{
+     let mySwiper=new Swiper('.swiper-container',{
+       direction:'horizontal',
+       loop:true,
+       // 如果需要分页器
+       pagination: '.swiper-pagination',
+       // 如果需要前进后退按钮
+       nextButton: '.swiper-button-next',
+       prevButton: '.swiper-button-prev',
+       // 如果需要滚动条
+       scrollbar: '.swiper-scrollbar',
+       grabCursor: true,
+       paginationClickable: true,
+       spaceBetween: 30,
+       centeredSlides: true,
+       autoplay: 2500
+     })
+   })
   },
   directives: {
   focus: {
@@ -119,6 +169,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 @import url('../assets/animate.css');
+@import url('../assets/swiper.min.css');
+
+.swiper-container {
+  width: 600px;
+  height: 300px;
+}
 .component-fade-enter-active, .component-fade-leave-active {
   transition: opacity .3s ease;
 }
